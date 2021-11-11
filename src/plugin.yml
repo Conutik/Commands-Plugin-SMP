@@ -1,0 +1,8 @@
+  name: SomeCommandsSMP
+  main: me.conutik.somecommandssmp.Main
+  version: 1.0
+  api-version: 1.17
+  commands:
+    tpa:
+      description: Tp to someone
+      aliases: ["teleportrequest", "requestteleport", "teleportask"]
