@@ -5,14 +5,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import java.io.File;
+public class Tpa implements CommandExecutor {
 
-public class tpa implements CommandExecutor {
-
-    private static Main main;
+    private static SomeCommandsSmp someCommandsSmp;
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -20,6 +17,7 @@ public class tpa implements CommandExecutor {
         if (sender instanceof Player) {
 
             final Player player = (Player) sender;
+            Config PlayerConfig = new Config();
 
             if(args.length == 0) {
                 player.sendMessage(ChatColor.RED + "Please specify who you want to tp to.");
@@ -37,11 +35,11 @@ public class tpa implements CommandExecutor {
                 return false;
             }
 
-            PlayerConfig.create(player);
+            PlayerConfig.createPlayerData(player);
 
             PlayerConfig.load(player);
 
-            PlayerConfig.config.set("tp", tper.getUniqueId());
+            PlayerConfig.getConfig().set("tp", tper.getUniqueId());
 
             player.sendMessage(ChatColor.GREEN + "TPA Request has been sent.");
 
